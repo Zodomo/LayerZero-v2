@@ -29,5 +29,6 @@ remappings = [
     'hardhat-deploy/=node_modules/hardhat-deploy/',
     '@layerzerolabs/lz-evm-protocol-v2/=node_modules/@layerzerolabs/lz-evm-protocol-v2/',
     '@layerzerolabs/lz-evm-messagelib-v2/=node_modules/@layerzerolabs/lz-evm-messagelib-v2/',
-    '@layerzerolabs/lz-evm-v1-0.7/=node_modules/@layerzerolabs/lz-evm-v1-0.7/'
+    '@layerzerolabs/lz-evm-v1-0.7/=node_modules/@layerzerolabs/lz-evm-v1-0.7/',
+    'solady/=node_modules/solady/'
 ]

@@ -14,6 +14,10 @@
   </p>
 </div>
 
+# This fork was modified to remove OpenZeppelin's Ownable library and replace their SafeERC20 library with Solady's SafeTransferLib within the OApp template. Users of this repo MUST be aware of the security considerations involving LZ's OApp and handle them accordingly. The ONLY reason you should use this library is if you don't want OApp to inherit Ownable from OpenZeppelin, and are aware of how to override the relevant functions.
+
+# This repo will likely lack frequent updates, as I'm just looking for OApp without Ownable inheritance. It is VERY likely that if you're reading this, the repo is already out of date. Use the primary commit to determine what changes you need to make to achieve the same results.
+
 LayerZero is an immutable, censorship-resistant, and permissionless messaging protocol, that connects blockchains (60+ and counting) to enable omnichain interoperability for blockchain applications. 
 
 With LayerZero V2, developers have the power to create applications that can seamlessly interact across multiple blockchains.

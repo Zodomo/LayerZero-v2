@@ -2,7 +2,8 @@
 
 pragma solidity ^0.8.20;
 
-import { SafeERC20, IERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import { IERC20 } from "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
+import { SafeTransferLib } from "solady/src/utils/SafeTransferLib.sol";
 import { MessagingParams, MessagingFee, MessagingReceipt } from "@layerzerolabs/lz-evm-protocol-v2/contracts/interfaces/ILayerZeroEndpointV2.sol";
 import { OAppCore } from "./OAppCore.sol";
 
@@ -11,7 +12,7 @@ import { OAppCore } from "./OAppCore.sol";
  * @dev Abstract contract implementing the OAppSender functionality for sending messages to a LayerZero endpoint.
  */
 abstract contract OAppSender is OAppCore {
-    using SafeERC20 for IERC20;
+    using SafeTransferLib for address;
 
     // Custom error messages
     error NotEnoughNative(uint256 msgValue);
@@ -119,6 +120,6 @@ abstract contract OAppSender is OAppCore {
         if (lzToken == address(0)) revert LzTokenUnavailable();
 
         // Pay LZ token fee by sending tokens to the endpoint.
-        IERC20(lzToken).safeTransferFrom(msg.sender, address(endpoint), _lzTokenFee);
+        lzToken.safeTransferFrom(msg.sender, address(endpoint), _lzTokenFee);
     }
 }

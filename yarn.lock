@@ -765,6 +765,7 @@ __metadata:
     "@openzeppelin/contracts-upgradeable": "npm:^4.8.1"
     hardhat-deploy: "npm:^0.11.44"
     rimraf: "npm:^5.0.5"
+    solady: "npm:^0.0.239"
     solidity-bytes-utils: "npm:^0.8.0"
   peerDependencies:
     solidity-bytes-utils: ^0.8.0
@@ -7439,6 +7440,13 @@ __metadata:
     ip: "npm:^2.0.0"
     smart-buffer: "npm:^4.2.0"
   checksum: 5074f7d6a13b3155fa655191df1c7e7a48ce3234b8ccf99afa2ccb56591c195e75e8bb78486f8e9ea8168e95a29573cbaad55b2b5e195160ae4d2ea6811ba833
+  languageName: node
+  linkType: hard
+
+"solady@npm:^0.0.239":
+  version: 0.0.239
+  resolution: "solady@npm:0.0.239"
+  checksum: beac4320bf4dbf8b96310512ddbd2bcdcefe3c0b330aa445d50e8375dd8e125e9d17c19bd3e87f0114c2fa22eb0ec44ac07026ea2b955fa56ecbd48f2df99184
   languageName: node
   linkType: hard
 
