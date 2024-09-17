@@ -2,14 +2,13 @@
 
 pragma solidity ^0.8.20;
 
-import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { IOAppOptionsType3, EnforcedOptionParam } from "../interfaces/IOAppOptionsType3.sol";
 
 /**
  * @title OAppOptionsType3
  * @dev Abstract contract implementing the IOAppOptionsType3 interface with type 3 options.
  */
-abstract contract OAppOptionsType3 is IOAppOptionsType3, Ownable {
+abstract contract OAppOptionsType3 is IOAppOptionsType3 {
     uint16 internal constant OPTION_TYPE_3 = 3;
 
     // @dev The "msgType" should be defined in the child contract.
@@ -19,13 +18,14 @@ abstract contract OAppOptionsType3 is IOAppOptionsType3, Ownable {
      * @dev Sets the enforced options for specific endpoint and message type combinations.
      * @param _enforcedOptions An array of EnforcedOptionParam structures specifying enforced options.
      *
-     * @dev Only the owner/admin of the OApp can call this function.
+     * @dev Only the owner/admin of the OApp should call this function.
+     * @dev NOTE: The original onlyOwner modifier was removed from this function in this fork.
      * @dev Provides a way for the OApp to enforce things like paying for PreCrime, AND/OR minimum dst lzReceive gas amounts etc.
      * @dev These enforced options can vary as the potential options/execution on the remote may differ as per the msgType.
      * eg. Amount of lzReceive() gas necessary to deliver a lzCompose() message adds overhead you dont want to pay
      * if you are only making a standard LayerZero message ie. lzReceive() WITHOUT sendCompose().
      */
-    function setEnforcedOptions(EnforcedOptionParam[] calldata _enforcedOptions) public virtual onlyOwner {
+    function setEnforcedOptions(EnforcedOptionParam[] calldata _enforcedOptions) public virtual {
         for (uint256 i = 0; i < _enforcedOptions.length; i++) {
             // @dev Enforced options are only available for optionType 3, as type 1 and 2 dont support combining.
             _assertOptionsType3(_enforcedOptions[i].options);
